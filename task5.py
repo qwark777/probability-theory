@@ -1,12 +1,9 @@
-# continuous from 5118 to 45400 написано на сайте https://archive.ics.uci.edu/dataset/10/automobile
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
+import numpy as np
+import pandas as pd
+
+
 data = pd.read_csv(r'automobile_data.csv')
-
-
-
 data_cleaned = data.dropna(subset=['price'])
 
 # Извлечение столбца для анализа
