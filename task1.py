@@ -1,7 +1,9 @@
-from ucimlrepo import fetch_ucirepo
 import pandas as pd
-automobile = fetch_ucirepo(id=10)
-# continuous from 5118 to 45400 написано на сайте https://archive.ics.uci.edu/dataset/10/automobile
-data = pd.DataFrame(automobile.data)
+from ucimlrepo import fetch_ucirepo
+wine_quality = fetch_ucirepo(id=186)
 
-data.to_csv('automobile_data.csv', index=False)
+X = wine_quality.data.features
+y = wine_quality.data.targets
+data = pd.concat([X, y], axis=1)
+data.to_csv('vine.csv', index=False)
+

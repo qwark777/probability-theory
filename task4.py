@@ -3,9 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-data = pd.read_csv(r'automobile_data.csv')
-data_cleaned = data.dropna(subset=['price'])
-column_data = data_cleaned['price']
+data = pd.read_csv(r'vine.csv')
+data_cleaned = data.dropna(subset=['pH'])
+column_data = data_cleaned['pH']
 
 
 
@@ -20,7 +20,7 @@ plt.plot(bin_centers, hist, 'r-', linewidth=2, label='Полигон часто�
 sns.kdeplot(column_data, color='b', linewidth=2, label='Кривая плотности')
 
 plt.title('Полигон частот и кривая плотности распределения')
-plt.xlabel('Цена')
+plt.xlabel('pH')
 plt.ylabel('Плотность')
 plt.legend()
 plt.show()

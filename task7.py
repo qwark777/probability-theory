@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 
-data = pd.read_csv(r'automobile_data.csv')
-column_data = data['price']
+data = pd.read_csv(r'vine.csv')
+column_data = data['pH']
 
 
 mean = column_data.mean()

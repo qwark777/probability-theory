@@ -3,8 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.stats import norm
 
-data = pd.read_csv(r'automobile_data.csv')
-column_data = data['price']
+data = pd.read_csv(r'vine.csv')
+column_data = data['pH']
 
 # Нахождение параметров распределения
 mean = column_data.mean()
@@ -21,8 +21,8 @@ y_theoretical = norm.cdf(x_theoretical, mean, std_dev)
 
 # Построение графиков
 plt.figure(figsize=(8, 6))
-plt.plot(x_ecdf, y_ecdf, label='Эмпирическая функция распределения (ECDF)', color='blue')
-plt.plot(x_theoretical, y_theoretical, label='Теоретическая функция распределения (CDF)', color='red', linestyle='--')
+plt.plot(x_ecdf, y_ecdf, label='Эмпирическая функция распределения', color='blue')
+plt.plot(x_theoretical, y_theoretical, label='Теоретическая функция распределения', color='red', linestyle='--')
 plt.title('Сравнение эмпирической и теоретической функций распределения')
 plt.xlabel('Цена')
 plt.ylabel('Кумулятивная вероятность')
@@ -30,4 +30,4 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-print("Если ECDF близко следует за теоретической CDF, распределение данных близко к теоретическому.")
+print("Если эмпирическая функция распределения близко следует за теоретической функций распределения, распределение данных близко к теоретическому.")

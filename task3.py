@@ -1,8 +1,8 @@
 import pandas as pd
 
 
-data = pd.read_csv(r'automobile_data.csv')
-column_data = data['price']
+data = pd.read_csv(r'vine.csv')
+column_data = data['pH']
 
 
 estimated_mean = column_data.mean() # методы моментов реализованы в библиотеке pandas
