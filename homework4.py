@@ -1,37 +1,26 @@
-import pandas as pd
-from scipy.stats import kstest, norm, lognorm
 import numpy as np
+import pandas as pd
+from scipy.stats import kstest
+
 data = pd.read_csv(r'vine.csv')
 
-# Пример данных (замените на ваши выборки)
 X = data['pH']
 Y = data['alcohol']
-# Нормализация данных
 X_std = (X - np.mean(X)) / np.std(X, ddof=0)
 Y_log = np.log(Y)
 Y_std = (Y_log - np.mean(Y_log)) / np.std(Y_log, ddof=0)
 
-# KS для нормального распределения X
 ks_stat_X, ks_pval_X = kstest(X_std, 'norm')
 print(f"KS тест для X (нормальное): statistic = {ks_stat_X:.4f}, p-value = {ks_pval_X:.4f}")
 
-# KS для логнормального Y (по логарифмам)
 ks_stat_Y, ks_pval_Y = kstest(Y_std, 'norm')
 print(f"KS тест для Y (логнормальное): statistic = {ks_stat_Y:.4f}, p-value = {ks_pval_Y:.4f}")
 
-from scipy.stats import chisquare
-
-
-import numpy as np
 from scipy.stats import chisquare, norm, lognorm
 
 
-def chi_squared_test(data, dist, bins=10):
-    # Гистограмма наблюдаемых значений
-    counts, bin_edges = np.histogram(data, bins= int(1 + np.log2(len(data)))
-)
-
-    # Параметры для заданного распределения
+def chi_squared_test(data, dist):
+    counts, bin_edges = np.histogram(data, bins= int(1 + np.log2(len(data))))
     if dist == 'norm':
         params = norm.fit(data)
         cdf_func = norm.cdf
@@ -42,15 +31,12 @@ def chi_squared_test(data, dist, bins=10):
     else:
         raise ValueError("Unsupported distribution")
 
-    # CDF на границах интервалов
     cdf_vals = cdf_func(bin_edges)
     expected_probs = np.diff(cdf_vals)
     expected_counts = expected_probs * len(data)
 
-    # Подгонка сумм вручную (нормализация)
     expected_counts *= counts.sum() / expected_counts.sum()
 
-    # Проведение χ²-теста
     chi2_stat, p_val = chisquare(counts, f_exp=expected_counts)
     return chi2_stat, p_val
 

@@ -1,13 +1,10 @@
-from scipy.stats import chi2
-import pandas as pd
 import numpy as np
-from scipy.stats import norm, lognorm
-from scipy.optimize import minimize
+import pandas as pd
+from scipy.stats import chi2
+from scipy.stats import norm
 
-# Загрузим данные
 data = pd.read_csv(r'vine.csv')
 
-# Пример данных (замените на ваши выборки)
 X = data['pH']
 Y = data['alcohol']
 
