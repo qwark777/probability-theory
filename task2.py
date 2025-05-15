@@ -6,6 +6,7 @@ data = pd.read_csv(r'vine.csv')
 
 column_data = data['pH']
 
+
 # это коэф стреджиса
 k_sterdjs = int(1 + np.log2(len(column_data)))
 

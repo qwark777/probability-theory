@@ -11,6 +11,7 @@ column_data = data_cleaned['pH']
 
 
 
+
 mean = column_data.mean()
 std_dev = column_data.std()
 

@@ -10,6 +10,7 @@ column_data = data['pH']
 mean = column_data.mean()
 std_dev = column_data.std()
 
+
 # Построение эмпирической функции распределения
 n = len(column_data)
 x_ecdf = np.sort(column_data)

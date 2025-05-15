@@ -7,6 +7,7 @@ data = pd.read_csv(r'vine.csv')
 column_data = data['pH']
 
 
+
 mean = column_data.mean()
 std_dev = column_data.std()
 

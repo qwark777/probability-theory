@@ -10,6 +10,7 @@ column_data = data_cleaned['pH']
 
 
 
+
 n_bins = int(1 + np.log2(len(column_data)))
 plt.hist(column_data, bins=n_bins, density=True, alpha=0.6, color='g', edgecolor='black', label='Гистограмма')
 hist, bin_edges = np.histogram(column_data, bins=n_bins, density=True)
